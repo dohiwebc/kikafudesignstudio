@@ -1,0 +1,2489 @@
+/* --- Base Settings --- */
+:root {
+    --bg-black: #0a0a0a;
+    --main-gold: #d4af37;
+    --text-main: #e0e0e0;
+    --text-sub: #999;
+    --font-serif: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "MS PMincho", serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    overflow-x: hidden; /* 横方向のはみ出しを隠す */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-main);
+    font-family: var(--font-serif);
+    margin: 0;
+    line-height: 1.8;
+    padding-top: 64px; /* ヘッダーを少し細くした分だけ上に詰める */
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px; /* PC最大幅 */
+    margin: 0 auto;
+    padding: 0 20px;   /* 左右の余白 */
+    box-sizing: border-box; /* paddingを含めた幅計算にする */
+}
+
+section {
+    width: 100%;
+    overflow: hidden; /* 各セクションでも念のためはみ出しをカット */
+}
+.text-gold { color: var(--main-gold); }
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* 他の要素より確実に前に出す */
+    background: rgba(5, 5, 5, 0.85); /* 透過度を少し下げて確実に背景を作る */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* ロゴは左、ナビは右へ */
+    align-items: center;
+}
+
+/* ロゴの設定 */
+.logo {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+}
+
+/* ロゴリンクのデザイン調整 */
+.logo {
+    text-decoration: none; /* 下線を消す */
+    color: var(--text-main); /* 文字色を維持 */
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.7; /* ホバーした時に少し薄くして「押せる」感を出す */
+}
+
+/* スマホ時はロゴを少しだけ小さくする */
+@media (max-width: 850px) {
+    .logo {
+        font-size: 1.05rem;
+        letter-spacing: 0.16em;
+    }
+}
+
+/* ナビゲーションメニューの設定 */
+.header-nav {
+    display: block; /* 確実に表示 */
+}
+
+.header-nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #ffffff !important; /* 強制的に白にする（一時的な確認用） */
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.header-nav a:hover {
+    color: var(--main-gold) !important;
+}
+
+.logo .en {
+    font-size: 0.7rem;
+    font-weight: normal;
+    margin-left: 10px;
+    color: var(--main-gold);
+}
+
+/* ロゴのモバイル最適化（ヘッダーはPCと同じサイズを維持し、フッターロゴのみ縮小） */
+@media (max-width: 600px) {
+    .footer-logo {
+        font-size: 1rem;
+        letter-spacing: 0.18em;
+    }
+    .footer-logo .en {
+        font-size: 0.6rem;
+        margin-left: 10px;
+    }
+}
+
+/* --- Hero --- */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+    overflow: hidden;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.hero-copy {
+    max-width: 540px;
+}
+
+.hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--main-gold);
+    margin-bottom: 18px;
+}
+
+#hero h1 {
+    font-size: 2.7rem;
+    margin-bottom: 18px;
+    letter-spacing: 0.12em;
+}
+
+.hero-lead {
+    color: var(--text-sub);
+    font-size: 0.95rem;
+}
+
+.hero-tagline {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    line-height: 1.8;
+}
+
+.hero-cta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 32px;
+}
+
+.hero-cta .btn-main {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    border-radius: 999px;
+    background: var(--main-gold);
+    color: #000;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.hero-cta .btn-main:hover {
+    opacity: 0.85;
+}
+
+.hero-cta .btn-link {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--text-main);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+.hero-cta .btn-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255,255,255,0.2), var(--main-gold));
+}
+
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-mockup-frame {
+    width: 420px;
+    max-width: 100%;
+    border-radius: 22px;
+    border: 1px solid rgba(212,175,55,0.4);
+    background: radial-gradient(circle at top, rgba(255,255,255,0.05), #050505 65%);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.hero-mockup-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.hero-mockup-bar span {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.18);
+}
+
+.hero-mockup-body {
+    padding: 22px 22px 26px;
+}
+
+.hero-mockup-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    border-radius: 999px;
+    border: 1px solid rgba(212,175,55,0.5);
+    color: var(--main-gold);
+    margin-bottom: 16px;
+}
+
+.hero-mockup-main {
+    height: 190px;
+    border-radius: 14px;
+    background:
+        linear-gradient(135deg, rgba(212,175,55,0.25), transparent 50%, rgba(106,90,205,0.25) 100%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 10px);
+    margin-bottom: 18px;
+}
+
+.hero-mockup-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.hero-mockup-meta span {
+    flex: 1;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+}
+
+/* 幾何学的なオーバーレイ（斜めライン） */
+#hero::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background:
+        linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.08) 40%, transparent 60%) 0 0 / 200% 200% no-repeat,
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 12px);
+    opacity: 0.5;
+    mix-blend-mode: soft-light;
+    animation: heroStripeDrift 28s linear infinite;
+}
+
+/* 幾何学的なサークルグリッド */
+#hero::after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow:
+        0 0 0 40px rgba(212, 175, 55, 0.02),
+        0 0 0 80px rgba(212, 175, 55, 0.01);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes heroStripeDrift {
+    0%   { transform: translate3d(-5%, -5%, 0) rotate(0deg); }
+    50%  { transform: translate3d(5%, 5%, 0) rotate(1deg); }
+    100% { transform: translate3d(-5%, -5%, 0) rotate(0deg); }
+}
+
+@media (max-width: 900px) {
+    #hero {
+        height: auto;
+        padding: 120px 0 80px;
+    }
+
+    .hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .hero-visual {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-mockup-frame {
+        width: 100%;
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 600px) {
+    #hero h1 {
+        font-size: 2.1rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ==========================================================================
+   Section Titles (さらに際立たせる)
+   ========================================================================== */
+.section-title {
+    position: relative;     /* 後ろの文字を配置する基準点 */
+    text-align: center;
+    font-size: 2.2rem;      /* 前面のメイン文字の大きさ */
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 0.2em;
+    margin-bottom: 80px;
+    z-index: 1;             /* メインの文字を前に出す */
+    text-transform: uppercase;
+}
+
+/* タイトルの下に引く繊細なライン */
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background: var(--main-gold); /* センターに金の細い線 */
+}
+
+/* 後ろに浮かび上がる薄い文字の設定 */
+.section-title::before {
+    content: attr(data-en);  /* HTMLのdata-en="〇〇"の中身を表示 */
+    position: absolute;
+    top: 50%;                /* 垂直中央 */
+    left: 50%;               /* 水平中央 */
+    transform: translate(-50%, -65%); /* 位置の微調整 */
+    font-size: 5rem;         /* メイン文字よりずっと大きく */
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.04); /* 極限まで薄く（0.04） */
+    z-index: -1;             /* 背後に回す */
+    letter-spacing: 0.1em;
+    pointer-events: none;    /* クリックなどを邪魔しない */
+}
+
+/* スマホでのバランス調整 */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 60px;
+    }
+    .section-title::before {
+        font-size: 3.5rem;   /* スマホでは少し小さくして画面に収める */
+    }
+}
+
+
+
+
+/* ==========================================================================
+   WORKS Section
+   ========================================================================== */
+#works {
+    padding: 100px 0;
+}
+
+.works-carousel {
+    position: relative;
+    margin-top: 60px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.works-carousel::before,
+.works-carousel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 140px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.works-carousel::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(10,10,10,0.98), transparent);
+}
+
+.works-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(10,10,10,0.98), transparent);
+}
+
+@media (min-width: 1025px) {
+    .works-carousel::before,
+    .works-carousel::after {
+        width: 220px;
+    }
+}
+
+.works-scroller {
+    overflow-x: auto;
+    overflow-y: visible;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+
+.works-scroller::-webkit-scrollbar {
+    height: 0;
+    display: none; /* WebKit */
+}
+
+.works-scroller::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.works-scroller::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+}
+
+.works-track {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.work-card {
+    flex: 0 0 calc(100% / 3.8);
+    scroll-snap-align: start;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 画像エリア */
+.work-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #222;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.work-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: 0.6s ease;
+}
+
+/* ホバー演出 */
+.work-card:hover .work-img img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.work-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.work-card:hover .work-overlay {
+    opacity: 1;
+}
+
+.work-overlay span {
+    color: var(--main-gold);
+    border: 1px solid var(--main-gold);
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+}
+
+/* 矢印ボタン */
+.works-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.works-arrow--prev {
+    left: 18px;
+}
+
+.works-arrow--next {
+    right: 18px;
+}
+
+.works-arrow:hover {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: rgba(212, 175, 55, 0.7);
+}
+
+@media (max-width: 768px) {
+    .works-arrow {
+        display: none;
+    }
+}
+
+/* テキスト部分 */
+.work-plan {
+    color: var(--main-gold);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.work-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+    color: var(--text-main);
+}
+
+.work-card p {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+}
+
+/* 横スクロールのレスポンシブ調整 */
+@media (max-width: 1024px) {
+    .work-card {
+        flex: 0 0 48%;
+    }
+}
+
+@media (max-width: 640px) {
+    .work-card {
+        flex: 0 0 78%;
+        scroll-snap-align: center;
+    }
+
+    .works-scroller {
+        padding-inline: 10%;
+    }
+}
+
+/* Price */
+.price-box {
+    border: 1px solid var(--main-gold);
+    padding: 40px;
+    text-align: center;
+}
+
+.amount {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+/* Flow */
+.flow-list {
+    list-style: none;
+    padding: 0;
+}
+
+.flow-list li {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.flow-list span {
+    color: var(--main-gold);
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+
+
+.contact-container {
+    max-width: 700px; /* あえて狭めて「細長く」見せる */
+    margin: 0 auto;
+}
+
+.contact-message {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-message h3 {
+    font-size: 1.5rem;
+    color: var(--main-gold);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.contact-message p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.8;
+}
+
+/* 相談カード */
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    border-color: var(--main-gold);
+    background: rgba(212, 175, 55, 0.05);
+    transform: translateY(-3px);
+}
+
+.contact-icon {
+    font-size: 1.8rem;
+    margin-right: 20px;
+    color: var(--main-gold);
+}
+
+.contact-card.line .contact-icon {
+    color: #06C755; /* LINEカラーをワンポイントで */
+}
+
+.contact-info h4 {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.contact-info p {
+    color: var(--text-sub);
+    font-size: 0.8rem;
+}
+
+.contact-card .arrow {
+    margin-left: auto;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+}
+
+/* FOOTER 修正 */
+.footer {
+    padding: 60px 0 30px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-logo {
+    display: inline-flex; /* 横並びにする */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* 下線を消す */
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.3em;
+    color: var(--text-main); /* メインは白 */
+    margin-bottom: 20px;
+    transition: opacity 0.3s;
+}
+
+.footer-logo:hover {
+    opacity: 0.7;
+}
+
+/* フッターロゴの中の英語部分 */
+.footer-logo .en {
+    font-size: 0.7rem;
+    font-weight: normal;
+    margin-left: 15px; /* 日本語との間隔 */
+    color: var(--main-gold); /* 英語は金色 */
+    letter-spacing: 0.2em;
+}
+
+.copyright {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.1em;
+}
+
+/* スマホ調整 */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 0 15px; /* 左右の詰まりを解消 */
+    }
+    .contact-message h3 {
+        font-size: 1.2rem;
+    }
+    .contact-card {
+        padding: 20px;
+    }
+}
+
+/* Pricing Section Base */
+.pricing {
+    position: relative;
+    padding: 100px 0;
+    background: var(--bg-black);
+    color: var(--text-main);
+    overflow: hidden;
+}
+
+.pricing::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background:
+        linear-gradient(135deg, transparent 0%, rgba(212,175,55,0.05) 40%, transparent 65%) 0 0 / 200% 200% no-repeat,
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 14px);
+    opacity: 0.5;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    margin: 60px auto;
+    max-width: 1100px;
+}
+
+/* Price Card */
+.price-card {
+    position: relative;
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        radial-gradient(circle at top, #1a1a1a, #050505);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.price-card:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85);
+    transform: translateY(-6px);
+}
+.plan-icon { font-size: 2.5rem; color: var(--main-gold); margin-bottom: 15px; }
+
+/* Popular Tag */
+.price-card.popular {
+    border: 2px solid var(--main-gold);
+    background:
+        radial-gradient(circle at top, rgba(212,175,55,0.2), #050505);
+}
+.popular-tag { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--main-gold); color: #000; padding: 5px 25px; border-radius: 50px; font-size: 0.8rem; font-weight: bold; }
+
+/* Price Logic (矢印フロー) */
+.price-selection { margin: 20px 0 10px; }
+.price-row.standard {
+    color: #666;
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    letter-spacing: 0.04em;
+}
+.price-arrow {
+    color: var(--main-gold);
+    font-size: 0.75rem;
+    margin: 5px 0;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+}
+.price-value {
+    font-size: 2.6rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+.price-value span {
+    font-size: 1rem;
+    color: var(--text-sub);
+}
+
+/* List Style */
+.price-card ul {
+    list-style: none;
+    text-align: left;
+    margin: 26px 0 0;
+    padding: 0;
+}
+.price-card ul li {
+    padding: 10px 0;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #222;
+}
+.price-card ul li i.fa-check { color: var(--main-gold); margin-right: 10px; }
+.price-card li.disabled { color: #444; }
+
+/* Buttons */
+.price-btn, .price-btn-main { display: block; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+.price-btn { border: 1px solid var(--main-gold); color: var(--main-gold); }
+.price-btn-main { background: var(--main-gold); color: #000; }
+.price-btn-main:hover { opacity: 0.8; }
+
+/* オプション全体のコンテナ：PCでも強制的に縦並びにする */
+.options-container {
+    display: flex;
+    flex-direction: column; /* 縦並びを強制 */
+    align-items: center;    /* 中央に寄せる */
+    gap: 80px;              /* ブロック間の余白をしっかり取る */
+    max-width: 700px;       /* ★ここが重要：幅を絞ることでスリムに見せる */
+    margin: 80px auto 0;    /* 上下に余白を持たせ中央配置 */
+}
+
+/* Pricing cards responsive */
+@media (max-width: 1024px) {
+    .price-grid {
+        gap: 24px;
+    }
+
+    .price-card {
+        padding: 36px 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .price-grid {
+        grid-template-columns: 1fr;
+        margin: 40px auto;
+    }
+
+    .price-card {
+        padding: 30px 22px;
+    }
+}
+
+/* 各ブロック（OPTIONS / AFTER SUPPORT）を囲む枠 */
+.option-block {
+    width: 100%;
+    padding: 40px;      /* 内側の余白をたっぷり取る */
+    background: rgba(255, 255, 255, 0.02); /* 2%だけの極薄背景 */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* 5%の極細枠線 */
+    border-radius: 20px; /* 角を少し丸めて上品に */
+    transition: all 0.4s ease;
+}
+
+
+/* ホバーした時にわずかに光る演出（お好みで） */
+.option-block:hover {
+    border-color: rgba(212, 175, 55, 0.2); /* 金色をわずかに混ぜる */
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* 見出しの余白を調整 */
+.option-block h3 {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    color: var(--main-gold);
+}
+
+/* コンテナ側の調整（縦に並べる間隔を調整） */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;          /* 枠同士の隙間 */
+    max-width: 750px;   /* 枠をつけたので少し幅を広げても綺麗です */
+    margin: 80px auto;
+}
+/* OPTIONS テーブル */
+.opt-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-serif);
+    margin-top: 4px;
+}
+
+.opt-table thead tr {
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.opt-table thead th {
+    padding: 10px 12px;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--main-gold);
+    font-weight: normal;
+    text-align: left;
+}
+
+.opt-table thead th:last-child {
+    text-align: right;
+}
+
+.opt-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
+}
+
+.opt-table tbody tr:hover {
+    background: rgba(212, 175, 55, 0.03);
+}
+
+.opt-table tbody td {
+    padding: 14px 12px;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.opt-table tbody td:last-child {
+    text-align: right;
+    color: var(--main-gold);
+    font-size: 0.88rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .opt-table tbody td {
+        font-size: 0.78rem;
+        padding: 12px 8px;
+    }
+    .opt-table tbody td:last-child {
+        font-size: 0.78rem;
+    }
+}
+
+/* サポートセクションのタイトル周りを少しゆったりさせる */
+.support-section {
+    padding-top: 20px;
+}
+
+/* 枠の外に出たボタンエリアの調整 */
+.pricing-cta-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px; /* 上の枠（サポート）との距離 */
+    padding: 20px 0;
+}
+
+.pricing-cta-container p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-bottom: 25px;
+    letter-spacing: 0.1em;
+}
+
+/* 枠自体のスタイル（再掲・微調整） */
+.option-block {
+    width: 100%;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+}
+
+/* スマホ用調整 */
+@media (max-width: 768px) {
+    .option-block {
+        padding: 30px 20px; /* スマホでは余白を少し詰める */
+    }
+}
+.support-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* 隙間をなくして線で区切る */
+}
+
+.support-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.1); /* ドットの細線 */
+    transition: all 0.3s ease;
+}
+
+/* おすすめ項目のさりげない強調 */
+.support-row.featured {
+    border-bottom: 1px dotted rgba(212, 175, 55, 0.3);
+}
+
+.support-name {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+/* 項目と金額を繋ぐドット（オプションのスタイルに合わせる場合） */
+.support-dot {
+    flex-grow: 1;
+    margin: 0 15px;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.05);
+}
+
+.support-cost {
+    font-size: 1rem;
+    color: var(--main-gold);
+    font-weight: bold;
+    font-family: 'Times New Roman', serif;
+    white-space: nowrap;
+}
+
+.support-cost span {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    font-weight: normal;
+}
+
+/* スマホでの「詰まり」を解消し、さらに細く見せる */
+@media (max-width: 768px) {
+    .support-section {
+        padding: 40px 15px; /* 左右の余白を多めにとって「細長く」見せる */
+    }
+
+    .support-row {
+        padding: 18px 5px;
+        font-size: 0.85rem;
+    }
+
+    .support-name {
+        font-size: 0.85rem;
+    }
+
+    .support-cost {
+        font-size: 0.95rem;
+    }
+
+    /* スマホでドット線が邪魔なら消す、または薄く維持 */
+    .support-dot {
+        margin: 0 10px;
+    }
+}
+/* Pricingセクション下の相談エリア */
+.pricing-cta-container {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.pricing-cta-container p {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    margin-bottom: 15px;
+    letter-spacing: 0.05em;
+}
+
+/* 小さめで上品な相談ボタン */
+.btn-sub-gold {
+    display: inline-block;
+    padding: 12px 35px; /* サイズを控えめに調整 */
+    font-size: 0.9rem;
+    color: var(--main-gold);
+    text-decoration: none;
+    border: 1px solid rgba(212, 175, 55, 0.5); /* 枠線は少し薄めに */
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.1em;
+    background: transparent;
+}
+
+.btn-sub-gold:hover {
+    background: var(--main-gold);
+    color: #000;
+    border-color: var(--main-gold);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+    .options-container { grid-template-columns: 1fr; }
+    .option-grid { grid-template-columns: 1fr; }
+}
+
+/* FLOWセクション（ヒーローと世界観を揃える） */
+#flow {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+#flow::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background:
+        linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.06) 40%, transparent 60%) 0 0 / 200% 200% no-repeat,
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 12px);
+    opacity: 0.45;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+
+#flow::after {
+    content: none;
+}
+
+/* FLOWセクション全体のコンテナ */
+.flow-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 60px;
+    align-items: stretch;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 各ステップの枠（極細・繊細デザイン） */
+.flow-step {
+    flex: 1;
+    padding: 32px 22px 26px;
+    background:
+        radial-gradient(circle at top, rgba(255,255,255,0.03), rgba(0,0,0,0.9));
+    border: 1px solid rgba(255, 255, 255, 0.06); 
+    border-radius: 14px;
+    position: relative;
+}
+
+/* ホバー時に枠線だけほんの少し光らせる */
+.flow-step:hover {
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* ステップ番号（フォントを上品に） */
+.flow-step .num {
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    color: var(--main-gold);
+    display: inline-block;
+    margin-bottom: 10px;
+    letter-spacing: 0.12em;
+    opacity: 0.9;
+}
+
+.flow-step h4 {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    letter-spacing: 0.1em;
+}
+
+.flow-step p {
+    font-size: 0.75rem; /* 小さめの文字で繊細さを強調 */
+    color: var(--text-sub);
+    line-height: 1.8;
+    text-align: justify; /* 両端揃えで綺麗に */
+}
+
+
+    .opt-item {
+        font-size: 0.85rem; /* スマホでは文字をわずかに小さくして一行に収める */
+        padding-bottom: 15px;
+    }
+
+.opt-note {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    margin-top: 25px;
+    line-height: 1.6;
+    text-align: left;
+    border-left: 1px solid var(--main-gold); /* 左に金の線を入れて視認性を上げる */
+    padding-left: 15px;
+}
+
+@media (max-width: 768px) {
+    .opt-note {
+        margin-top: 20px;
+        padding-left: 10px;
+    }
+}
+
+
+/* Pricing下の注意書き */
+.pricing-notes {
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+}
+
+.pricing-notes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pricing-notes li {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    line-height: 1.8;
+    margin-bottom: 5px;
+    text-align: left; /* リストは左寄せが見やすい */
+    opacity: 0.8;
+    position: relative;
+    padding-left: 10px;
+}
+
+/* スマホでの調整 */
+@media (max-width: 768px) {
+    .pricing-notes {
+        margin-top: 30px;
+    }
+    .pricing-notes li {
+        font-size: 0.7rem;
+        line-height: 1.6;
+    }
+}
+
+/* アニメーションの初期状態（消えている状態） */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px); /* 30px下に置いておく */
+    transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+/* 表示された時（灯火が灯る瞬間） */
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 少しずつ遅れて出る演出（カードなどに使う） */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+/* ==========================================================================
+   Responsive Final Fix (スマホ表示の最終調整)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. コンテナの幅を100%に固定して横揺れを完全に防ぐ */
+    .container {
+        width: 100% !important;
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. FLOW / OPTIONS / CONTACT 共通：横いっぱいの「横長の箱」にする */
+    .flow-container, 
+    .options-container,
+    .contact-container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 40px 0 !important;
+        padding: 0 !important;
+        gap: 20px !important;
+    }
+
+    /* 3. 各枠のデザイン調整：スマホで「超縦長」になるのを防ぐ */
+    .flow-step, 
+    .option-block,
+    .price-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 25px 20px !important; /* 内側の上下余白を少し詰める */
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 4. テキストサイズの最適化 */
+    .flow-step p, .opt-item, .support-row {
+        font-size: 0.85rem !important;
+        line-height: 1.6 !important;
+        text-align: left;
+    }
+
+    /* 5. WORKS（実績）も1列に */
+    .works-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+
+@media (max-width: 768px) {
+    /* 旧スマホナビ用スタイルは削除済み（ハンバーガーメニューに一本化） */
+}
+}
+
+/* 1024px（タブレット・iPadなど）でのFLOWの挙動を安定させる */
+@media (max-width: 1024px) {
+    .flow-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* --- Flow Connection Lines (位置ズレ修正版) --- */
+
+/* 接続線の共通設定 */
+.flow-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    background: rgba(212, 175, 55, 0.3); /* 金色の線を少しだけ濃く */
+    z-index: 1;
+}
+
+/* PC：数字の高さ(01, 02...)の真横に線を配置 */
+@media (min-width: 1025px) {
+    .flow-step:not(:last-child)::after {
+        /* カードの右端から、次のカードの左端までを繋ぐ */
+        right: -16px;      /* gap: 15px 分の隙間をまたぐ */
+        top: 45px;         /* ★数字の高さに合わせて調整（ズレる場合はここを微調整） */
+        width: 16px;       /* 隙間を埋める長さ */
+        height: 1px;       /* 繊細な極細線 */
+    }
+}
+
+/* スマホ：カードの底辺中央から垂直に線を出す */
+@media (max-width: 1024px) {
+    .flow-step:not(:last-child)::after {
+        bottom: -20px;     /* カードの下に配置 */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 20px;
+    }
+}
+
+/* 数字のデザインも整えて、線の起点にする */
+.flow-step .num {
+    display: inline-block;
+    font-size: 1.1rem;
+    color: var(--main-gold);
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.5); /* 数字の下にも線を引く */
+    line-height: 1;
+}
+
+
+
+.section-title {
+    opacity: 0;
+    letter-spacing: -0.2em; /* 最初は詰まっている */
+    transition: opacity 1.5s ease, letter-spacing 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section-title.is-visible {
+    opacity: 1;
+    letter-spacing: 0.2em; /* 本来の間隔へ */
+}
+
+/* タイトルの下のラインを左から右へ引く */
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0); /* 最初は長さゼロ */
+    width: 60px;
+    height: 1px;
+    background: var(--main-gold);
+    transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center; /* 中央から左右に伸びる */
+}
+
+/* タイトルがis-visibleになったら線を伸ばす */
+.section-title.is-visible::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+
+@media (max-width: 768px) {
+    /* 既存のコードがある場合はその中に追加 */
+
+    #hero h1 {
+        font-size: 1.5rem !important; /* ★ここでサイズを調整。1.8remより小さく */
+        line-height: 1.6;
+        padding: 0 10px; /* 画面端に文字がくっつかないように */
+    }
+
+    #hero p {
+        font-size: 0.8rem; /* 下のサブテキストも合わせて調整する場合 */
+    }
+}
+
+/* --- Works Content Style --- */
+.work-content {
+    padding: 0 10px; /* すでに枠があるので内側は控えめに */
+}
+
+/* タイトルと日付の並びを繊細に */
+.work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* 控えめな金の線 */
+    padding-bottom: 10px;
+}
+
+.work-header h3 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.work-date {
+    font-family: 'Times New Roman', serif; /* 数字は明朝系で上品に */
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    letter-spacing: 0.1em;
+}
+
+/* スペックリストの整列 */
+.work-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.spec-row {
+    display: flex;
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.spec-label {
+    width: 95px; /* 制作範囲などの4〜5文字を収める幅 */
+    color: var(--text-sub);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.spec-label::after {
+    content: ":";
+    position: absolute;
+    right: 12px;
+    opacity: 0.2;
+}
+
+.spec-value {
+    color: var(--text-main);
+    font-size: 0.8rem;
+}
+
+/* 凪 燈さんの武器（Firebase・期間）の強調 */
+.tech-highlight {
+    color: var(--main-gold);
+    font-weight: bold;
+}
+
+.highlight-text {
+    color: var(--main-gold);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+/* プラン名はカードの最後に少し浮かせる */
+.work-plan {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 0.7rem;
+    color: var(--main-gold);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 2px 12px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    width: fit-content;
+}
+
+/* 画像ホバー時の枠線変化 */
+.work-card:hover .work-img {
+    border-color: var(--main-gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+/* プラン名タグのスタイル（タイトルとスペックの間） */
+.work-plan-tag {
+    font-size: 0.7rem;
+    color: var(--main-gold);
+    background: rgba(212, 175, 55, 0.08);
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    margin: 8px 0 15px 0; /* 上下の間隔を調整 */
+}
+
+/* 外部サイトリンクの調整 */
+.work-footer {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.work-external-link {
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+}
+
+.work-external-link:hover {
+    color: var(--main-gold);
+}
+
+/* プラン名タグのスタイル（タイトルとスペックの間） */
+.work-plan-tag {
+    font-size: 0.7rem;
+    color: var(--main-gold);
+    background: rgba(212, 175, 55, 0.08);
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    margin: 8px 0 15px 0; /* 上下の間隔を調整 */
+}
+
+/* 外部サイトリンクの調整 */
+.work-footer {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.work-external-link {
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+}
+
+.work-external-link:hover {
+    color: var(--main-gold);
+}
+
+/* --- After Support: 3-Card Layout --- */
+
+.support-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.support-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 22px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.support-card:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.support-card.featured {
+    border-color: rgba(212, 175, 55, 0.5);
+    background: rgba(212, 175, 55, 0.04);
+}
+
+.support-card.featured:hover {
+    border-color: var(--main-gold);
+    background: rgba(212, 175, 55, 0.07);
+}
+
+/* おすすめバッジ（index.html の AFTER SUPPORT カード専用） */
+.support-cards .support-badge {
+    position: absolute;
+    top: -1px;
+    right: 16px;
+    background: var(--main-gold);
+    color: #0a0a0a;
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    border-radius: 0 0 4px 4px;
+}
+
+.support-card-icon {
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+}
+
+.support-card-name {
+    font-size: 0.88rem;
+    color: var(--text-main);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.support-card-price {
+    font-size: 1.15rem;
+    color: var(--main-gold);
+    font-weight: bold;
+    font-family: 'Times New Roman', serif;
+    margin-bottom: 6px;
+}
+
+.support-card-price span {
+    font-size: 0.72rem;
+    color: var(--text-sub);
+    font-weight: normal;
+    font-family: inherit;
+}
+
+.support-card-annual {
+    font-size: 0.7rem;
+    color: var(--main-gold);
+    background: rgba(212, 175, 55, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    padding: 3px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+}
+
+.support-card-annual span {
+    color: var(--text-sub);
+    font-size: 0.65rem;
+}
+
+/* PC: 箇条書きリスト */
+.support-card-desc {
+    font-size: 0.78rem;
+    color: var(--text-sub);
+    line-height: 1.8;
+    margin-bottom: 10px;
+    flex: 1;
+    padding-left: 16px;
+    list-style: none;
+}
+
+.support-card-desc li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 4px;
+}
+
+.support-card-desc li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 5px;
+    height: 1px;
+    background: var(--main-gold);
+    opacity: 0.6;
+}
+
+/* スマホ: インライン表示（ / 区切り） */
+@media (max-width: 768px) {
+    .support-card-desc {
+        padding-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+    }
+    .support-card-desc li {
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+    .support-card-desc li::before {
+        display: none;
+    }
+    .support-card-desc li::after {
+        content: " / ";
+        color: rgba(255, 255, 255, 0.25);
+        margin: 0 4px;
+    }
+    .support-card-desc li:last-child::after {
+        display: none;
+    }
+}
+
+.support-card-note {
+    font-size: 0.72rem;
+    color: var(--main-gold);
+    opacity: 0.75;
+    line-height: 1.5;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    padding-top: 10px;
+    margin: 0;
+}
+
+/* スマホ対応：縦1列 */
+@media (max-width: 768px) {
+    .support-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+/* --- Footer Legal Links (ロゴの真上) --- */
+.footer .legal-links {
+    margin-bottom: 25px; /* ロゴとの適切な距離 */
+    text-align: center;
+}
+
+.footer .legal-links a {
+    color: var(--text-sub); /* #999 */
+    text-decoration: none;
+    font-size: 0.7rem;      /* ロゴより控えめなサイズ */
+    letter-spacing: 0.15em;
+    opacity: 0.6;           /* 普段は背景に馴染ませる */
+    transition: all 0.4s ease;
+    font-family: var(--font-serif);
+    position: relative;
+    padding-bottom: 3px;
+}
+
+/* ホバー時に金色の線がスッと現れる演出 */
+.footer .legal-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background-color: var(--main-gold);
+    transition: width 0.4s ease;
+}
+
+.footer .legal-links a:hover {
+    opacity: 1;
+    color: var(--main-gold);
+}
+
+.footer .legal-links a:hover::after {
+    width: 100%; /* ホバーした時だけ下に金色の線が伸びる */
+}
+
+/* スマホでの位置微調整 */
+@media (max-width: 768px) {
+    .footer .legal-links {
+        margin-bottom: 15px;
+    }
+    .footer .legal-links a {
+        font-size: 0.65rem;
+    }
+}
+
+/* CONTACTセクション内の規約誘導 */
+.contact-terms-notice {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.contact-terms-notice p {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+.contact-terms-notice a {
+    color: var(--main-gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    margin: 0 4px;
+    transition: all 0.3s ease;
+}
+
+.contact-terms-notice a:hover {
+    border-bottom-color: var(--main-gold);
+    opacity: 1;
+}
+
+/* 改行コントロール（スマホのみ） */
+.sp-only { display: none; }
+
+@media (max-width: 768px) {
+    .contact-terms-notice {
+        margin-bottom: 25px;
+    }
+    .contact-terms-notice p {
+        font-size: 0.7rem;
+    }
+    .sp-only { display: block; }
+}
+
+/* ==========================================================================
+   FAQ Section
+   ========================================================================== */
+.faq-section {
+    padding: 100px 0;
+    background-color: var(--bg-black);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 質問部分（ボタン） */
+.faq-question {
+    width: 100%;
+    padding: 25px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.4s ease;
+}
+
+.faq-question:hover {
+    color: var(--main-gold);
+}
+
+/* ＋アイコン：::before が横線、::after が縦線 */
+.faq-icon {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: "";
+    position: absolute;
+    background-color: var(--main-gold);
+}
+
+/* 横線（常に表示） */
+.faq-icon::before {
+    top: 5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+}
+
+/* 縦線（開いたとき回転して消える） */
+.faq-icon::after {
+    top: 0;
+    left: 5px;
+    width: 1px;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.4s ease;
+}
+
+.faq-item.is-active .faq-icon::after {
+    transform: rotate(90deg);
+    opacity: 0;
+}
+
+/* 回答部分 */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.4s ease;
+}
+
+.faq-answer p {
+    padding: 0 10px 25px;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    line-height: 1.8;
+}
+
+.faq-item.is-active .faq-answer {
+    max-height: 500px;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .faq-question {
+        font-size: 0.85rem;
+        padding: 20px 5px;
+    }
+}
+
+.btn-more {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 40px;
+    color: var(--main-gold);
+    border: 1px solid var(--main-gold);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-more span {
+    margin-left: 10px;
+    transition: transform 0.4s ease;
+}
+
+.btn-more:hover {
+    background: var(--main-gold);
+    color: var(--bg-black);
+}
+
+.btn-more:hover span {
+    transform: translateX(5px);
+}
+
+.index-about-right {
+    text-align: left;
+}
+
+.catch-copy {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    color: var(--text-main);
+    letter-spacing: 0.05em;
+}
+
+.short-intro {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--text-sub);
+    margin-bottom: 40px;
+    max-width: 500px; /* 広がりすぎないように制限 */
+}
+
+/* スマホ表示の時は中央寄せにする */
+@media (max-width: 850px) {
+    .index-about-right {
+        text-align: center;
+    }
+    .short-intro {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .catch-copy {
+        font-size: 1.4rem;
+    }
+}
+
+/* レイアウトを中央揃えに変更 */
+.index-about-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 横方向の中央 */
+    text-align: center;  /* テキストの中央 */
+    gap: 40px;
+    margin-top: 60px;
+}
+
+/* 画像プレースホルダーの中央化 */
+.index-about-left {
+    width: 100%;
+    max-width: 400px; /* 画像が広がりすぎないように制限 */
+    margin: 0 auto;
+}
+
+/* テキストエリアの中央化 */
+.index-about-right {
+    text-align: center; /* 念のためここでも中央指定 */
+    width: 100%;
+}
+
+.catch-copy {
+    font-size: 2rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    color: var(--text-main);
+    letter-spacing: 0.1em;
+}
+
+.short-intro {
+    font-size: 0.95rem;
+    line-height: 2.2;
+    color: var(--text-sub);
+    margin: 0 auto 45px auto; /* 上 左右(中央) 下 の順 */
+    max-width: 600px; /* 読みやすい横幅に抑える */
+}
+
+/* ボタンも中央へ */
+.btn-more {
+    margin: 0 auto;
+}
+
+/* レスポンシブ：スマホでの調整 */
+@media (max-width: 850px) {
+    .catch-copy {
+        font-size: 1.5rem;
+    }
+}
+
+/* スマホ（特に幅の狭い端末）ではキャッチコピーを少し小さくして改行を減らす */
+@media (max-width: 480px) {
+    .catch-copy {
+        font-size: 1.2rem;
+        letter-spacing: 0.03em;
+    }
+}
+
+/* セクション全体のラッパーを中央揃えに固定 */
+.index-about-wrapper {
+    display: flex;
+    flex-direction: column; /* 縦並びを強制 */
+    align-items: center;    /* 左右の中央揃え */
+    text-align: center;     /* テキストの中央揃え */
+    max-width: 900px;       /* コンテンツ全体の最大幅 */
+    margin: 60px auto 0;    /* 上・左右(自動)・下 */
+    gap: 50px;              /* 画像とテキストの間の余白 */
+}
+
+/* 画像・左側ブロックの調整 */
+.index-about-left {
+    width: 100%;
+    max-width: 450px;       /* PCで画像が大きすぎないように制限 */
+}
+
+/* テキスト・右側ブロックの調整 */
+.index-about-right {
+    width: 100%;
+}
+
+.catch-copy {
+    font-size: 2.2rem;      /* PCで見栄えがするサイズ */
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: var(--text-main);
+    letter-spacing: 0.1em;
+}
+
+/* --- スマホでの「私について」キャッチコピー調整 --- */
+@media (max-width: 480px) {
+    #index-about .catch-copy {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+    }
+}
+
+.short-intro {
+    font-size: 1rem;
+    line-height: 2.2;
+    color: var(--text-sub);
+    max-width: 650px;       /* 文章が横に伸びすぎないように制限 */
+    margin: 0 auto 50px;    /* 下のボタンとの距離 */
+}
+
+/* --- 1. 全体共通（ベース） --- */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* --- 2. PC表示（851px以上） --- */
+@media (min-width: 851px) {
+    /* ハンバーガーボタンを完全に消す */
+    .menu-trigger {
+        display: none !important;
+    }
+
+    /* メニューを横並びに戻す */
+    .nav-list {
+        display: flex !important; /* 強制的に表示 */
+        gap: 30px;
+        list-style: none;
+        position: static; /* fixedを解除 */
+        width: auto;
+        height: auto;
+        background: none;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        color: var(--text-main);
+        text-decoration: none;
+    }
+}
+
+/* --- 3. スマホ表示（850px以下） --- */
+@media (max-width: 850px) {
+    /* ここでは旧実装を削除し、新しいハンバーガーメニュー用スタイルに一元化 */
+}
+
+/* --- ヘッダー共通設定 --- */
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 4%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: baseline; /* 漢字と英語の底辺を合わせる */
+    gap: 15px; /* 名前と英語の間の余白 */
+    text-decoration: none;
+    color: var(--text-main);
+    z-index: 102;
+}
+
+.logo .en {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--main-gold);
+}
+
+/* --- PC表示（851px以上） --- */
+@media (min-width: 851px) {
+    .menu-trigger {
+        display: none !important;
+    }
+    .nav-list {
+        display: flex !important;
+        gap: 30px;
+        list-style: none;
+    }
+    .nav-link {
+        text-decoration: none;
+        font-size: 0.9rem;
+        letter-spacing: 0.1em;
+    }
+}
+
+/* --- スマホ表示（850px以下）: ハンバーガーメニュー --- */
+@media (max-width: 850px) {
+    /* header-inner: ロゴ左寄せ・絶対配置の基準 */
+    .header-inner {
+        position: relative !important;
+        padding: 20px 4% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* navコンテナ: サイズなし・フローに影響させない */
+    .header-nav {
+        position: static !important;
+        display: block !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* ハンバーガーボタン: header-inner右端・縦中央に絶対配置 */
+    .menu-trigger {
+        display: block !important;
+        position: absolute !important;
+        top: 50% !important;
+        right: 16px !important;
+        left: auto !important;
+        transform: translateY(-50%) !important;
+        z-index: 9999 !important;
+        width: 44px !important;
+        height: 44px !important;
+        background: transparent !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 0 !important;
+    }
+
+    /* 三本線（アニメーションの核） */
+    .menu-trigger span {
+        display: block;
+        width: 30px;
+        height: 2px;
+        background: var(--main-gold);
+        position: absolute;
+        left: 7px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 三本線の初期位置（ボタン内の縦中央付近） */
+    .menu-trigger span:nth-child(1) { top: 14px; }
+    .menu-trigger span:nth-child(2) { top: 22px; opacity: 1; }
+    .menu-trigger span:nth-child(3) { top: 30px; }
+
+    /* ×印アニメーション */
+    .menu-trigger.is-active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-trigger.is-active span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    .menu-trigger.is-active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* フルスクリーンメニュー本体 */
+    .nav-list {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(5, 5, 5, 0.98);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 32px 40px;
+        gap: 28px;
+        transform: translateY(-8px);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            opacity 0.24s ease,
+            transform 0.24s ease,
+            visibility 0.24s ease;
+        z-index: 1900;
+        list-style: none;
+    }
+
+    body.nav-open .nav-list {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        letter-spacing: 0.18em;
+    }
+
+    .nav-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 1800;
+    }
+
+    body.nav-open .nav-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* --- Hearing Guide Section --- */
+#hearing-guide {
+    padding: 120px 0;
+    background: linear-gradient(to bottom, var(--bg-black), #111);
+}
+
+.hearing-guide-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    justify-content: space-between;
+}
+
+.hearing-text {
+    flex: 1;
+}
+
+.hearing-text p {
+    font-size: 1.1rem;
+    line-height: 2;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.hearing-sub-text {
+    font-size: 0.85rem !important;
+    color: var(--text-sub);
+    border-left: 1px solid var(--main-gold);
+    padding-left: 20px;
+    margin-bottom: 40px !important;
+}
+
+.hearing-cta {
+    margin-top: 50px;
+}
+
+/* 画像側の装飾（枠組みだけで高級感を演出） */
+.hearing-image {
+    flex: 0.8;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.image-frame {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.frame-deco {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--main-gold);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .hearing-guide-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hearing-sub-text {
+        border-left: none;
+        border-top: 1px solid var(--main-gold);
+        padding-left: 0;
+        padding-top: 20px;
+    }
+}
+
+/* --- Contact Section Extensions --- */
+
+/* 1. カードが3つになったので、レイアウトを最適化 */
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 700px;
+    margin: 40px auto 0;
+}
+
+/* 2. ヒアリングシート専用のアイコン色やホバー演出（任意） */
+.contact-card.hearing .contact-icon {
+    color: var(--main-gold);
+}
+
+/* 3. ホバー時の浮き上がりを少し強調 */
+.contact-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--main-gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 4. アニメーションの遅延設定を追加（既存になければ） */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+/* 5. アイコンのサイズ微調整 */
+.contact-icon i {
+    font-size: 1.5rem;
+}
+
+/* モバイル対応：さらにコンパクトに */
+@media (max-width: 768px) {
+    .contact-methods {
+        gap: 15px;
+        padding: 0 10px;
+    }
+    
+    .contact-card {
+        padding: 20px;
+    }
+    
+    .contact-info h4 {
+        font-size: 1rem;
+    }
+}

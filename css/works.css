@@ -1,0 +1,636 @@
+/* --- Detail Layout Base --- */
+.detail-container {
+    padding-top: 60px;
+    padding-bottom: 150px;
+}
+
+.hero-text-area {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* --- Simple Mockup Display --- */
+.mockup-display {
+    max-width: 1000px;
+    margin: 0 auto 100px;
+    filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.4));
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mockup-display:hover {
+    transform: translateY(-10px);
+}
+
+.mockup-full {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* 背景が黒に馴染まない場合は以下を調整 */
+    mix-blend-mode: screen; 
+}
+
+/* --- Info Grid --- */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 50px 0;
+    margin: 0 auto 100px;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    max-width: 1100px;
+}
+
+.info-item { text-align: center; }
+.info-item .label { font-size: 0.65rem; color: var(--main-gold); letter-spacing: 0.2em; margin-bottom: 10px; display: block; }
+.info-item .value { font-size: 0.9rem; color: var(--text-main); }
+.site-link { color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--main-gold); padding-bottom: 2px; }
+
+/* --- Content Styling --- */
+.content-block { max-width: 850px; margin: 0 auto 100px; }
+.content-sub-title { font-size: 1.1rem; color: var(--main-gold); letter-spacing: 0.3em; margin-bottom: 35px; border-left: 2px solid var(--main-gold); padding-left: 20px; }
+.content-block p { font-size: 0.95rem; color: var(--text-sub); line-height: 2.2; margin-bottom: 25px; text-align: justify; }
+
+.tech-highlight { color: var(--main-gold); font-weight: bold; }
+
+/* --- Back Button --- */
+.detail-back-btn { text-align: center; }
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .info-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .mockup-display { width: 110%; margin-left: -5%; }
+}
+
+@media (max-width: 768px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .mockup-display { width: 120%; margin-left: -10%; }
+}
+
+/* --- Tables & Cards Shared Style --- */
+/* コスト表とサポート枠のベースを完全に統一 */
+.cost-table, 
+.support-card-compact {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    box-sizing: border-box; /* 枠線を含めたサイズ計算 */
+}
+
+/* --- Cost Table --- */
+.cost-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+    color: var(--text-sub);
+}
+
+.cost-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-weight: bold;
+    color: var(--main-gold);
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--main-gold);
+}
+
+/* --- Support Section (Compact) --- */
+.support-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.support-plan-name {
+    font-size: 1rem;
+    color: var(--main-gold);
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.support-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+/* リストを2列にしてコンパクトに */
+.support-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 12px 20px;
+}
+
+.support-list li {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    padding-left: 1.5em;
+    position: relative;
+    line-height: 1.4;
+}
+
+.support-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--main-gold);
+    font-weight: bold;
+}
+
+.support-badge {
+    display: inline-block;
+    color: var(--main-gold);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding-top: 15px;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    width: 100%;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    /* スマホでは2列だと狭いので1列に戻す */
+    .support-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .support-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .cost-table, 
+    .support-card-compact {
+        padding: 20px; /* スマホでは余白を少し詰める */
+    }
+}
+
+/* --- Mockup Link Button --- */
+.mockup-link-area {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn-visit-site {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 45px;
+    background: transparent;
+    border: 1px solid var(--main-gold);
+    color: var(--main-gold);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    transition: all 0.4s ease;
+    border-radius: 2px;
+}
+
+.btn-visit-site:hover {
+    background: var(--main-gold);
+    color: #000;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+}
+
+.btn-arrow {
+    font-size: 1.1rem;
+    transition: transform 0.4s ease;
+}
+
+.btn-visit-site:hover .btn-arrow {
+    transform: translateX(8px);
+}
+
+/* スマホでのボタン幅調整 */
+@media (max-width: 768px) {
+    .btn-visit-site {
+        width: 70%;
+        justify-content: center;
+        padding: 18px 0;
+    }
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.8); /* 背景を少し透過させると高級感が出ます */
+    backdrop-filter: blur(10px);
+}
+
+/* header周辺の修正 */
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* スムーズスクロールを有効にする（既に入っていれば不要です） */
+html {
+    scroll-behavior: smooth;
+}
+
+.mockup-display {
+    position: relative;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.mockup-client-name {
+    font-family: 'Playfair Display', serif; /* もしインポートしていれば。なければ明朝体など */
+    font-size: 3rem;
+    font-weight: bold;
+    color: rgba(212, 175, 55, 0.1); /* 非常に薄い金色にして背景っぽく見せる */
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: -40px; /* 画像と少し重ねることで奥行きを出す */
+    position: relative;
+    z-index: 0;
+}
+
+.mockup-full {
+    position: relative;
+    z-index: 1; /* 文字の上に画像が来るように設定 */
+    max-width: 100%;
+    height: auto;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .mockup-client-name {
+        font-size: 1.5rem;
+        margin-bottom: -20px;
+    }
+}
+
+.hero-sub-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em; 
+    color: var(--main-gold);
+    margin-top: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.section-title {
+    letter-spacing: -0.03em;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    line-height: 1.1; /* 行間を詰めるとより美しくなります */
+}
+
+/* --- PC・ワイド画面用の調整 --- */
+@media (min-width: 1024px) {
+    .section-title {
+        font-size: 2.5rem; 
+        /* カンマをピリオドに修正し、マイナス値にしてギュッと詰めました */
+        letter-spacing: -0.05em; 
+        margin-bottom: 0;
+    }
+
+    .hero-sub-tag {
+        font-size: 1.5rem; /* 1.5remだと少し大きすぎてタイトルと喧嘩したので微調整 */
+        letter-spacing: 0.5em; /* サブは少し広げることで「タイトルを支える」バランスになります */
+        margin-top: 10px;
+    }
+
+    .mockup-display {
+        margin-top: 100px; /* タイトルが巨大なので少し距離を広げました */
+        max-width: 1100px; /* よりワイドに見せるために少しアップ */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mockup-full {
+        width: 100%; /* 画像が親要素にしっかり収まるように */
+        height: auto;
+        transform: scale(1.05);
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+}
+
+/* スマホ・タブレットのバランス */
+@media (max-width: 1023px) {
+    .section-title {
+        font-size: 2.2rem;
+        letter-spacing: -0.02em;
+    }
+    
+    .hero-sub-tag {
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+    }
+}
+
+/* --- PC・ワイド画面用の調整 --- */
+@media (min-width: 1024px) {
+    .detail-container { 
+        padding-top: 60px; /* 全体の開始位置をさらに上げる */
+    }
+
+    .hero-text-area {
+        margin-bottom: 0; /* タイトルエリア自体の下余白を消す */
+    }
+
+    .section-title {
+        font-size: 8rem; 
+        letter-spacing: -0.05em; 
+        line-height: 0.8; /* 1.0を割って、文字の上下の隙間を強制的に排除 */
+        margin-bottom: -25px; /* 下のサブタグをさらに強引に上に引っ張り上げる */
+        margin-top: -20px; /* 上方向も少し詰める */
+    }
+
+    .hero-sub-tag {
+        font-size: 1.5rem;
+        letter-spacing: 0.5em;
+        margin-top: 0; 
+        padding-top: 0;
+        position: relative;
+        z-index: 2; /* タイトルと重なっても見えるように */
+    }
+
+    .mockup-display {
+        margin-top: 30px; /* 画像ももっと上に近づける */
+        max-width: 1100px;
+    }
+}
+
+/* --- Achievements Grid --- */
+.achieve-grid {
+    display: flex;
+    justify-content: space-around;
+    max-width: 900px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.achieve-num {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--main-gold);
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.achieve-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-sub);
+    margin-top: 10px;
+    display: block;
+}
+
+/* --- Client Testimonial --- */
+.client-testimonial {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 60px 40px;
+    background: rgba(212, 175, 55, 0.03);
+    border-left: 1px solid var(--main-gold);
+    position: relative;
+}
+
+.quote-icon {
+    font-size: 4rem;
+    color: var(--main-gold);
+    font-family: serif;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    opacity: 0.2;
+}
+
+/* --- Client Testimonial (コメント部分のみ) --- */
+.client-testimonial {
+    /* 横幅が画面を突き抜けないように max-width を設定 */
+    max-width: 800px;
+    width: 90%; /* スマホでは画面幅の90%に収まるようにする */
+    margin: 100px auto;
+    padding: 50px 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 2px solid var(--main-gold);
+    position: relative;
+    box-sizing: border-box; /* パディングを含めたサイズ計算にする */
+}
+
+.quote-icon {
+    font-size: 5rem;
+    color: var(--main-gold);
+    font-family: serif;
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    opacity: 0.1;
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    line-height: 2.2;
+    color: var(--text-main);
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    text-align: justify;
+    word-break: break-all; /* 長い単語での突き抜けを防止 */
+}
+
+.testimonial-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    padding-top: 20px;
+}
+
+.client-name {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--main-gold);
+    letter-spacing: 0.05em;
+}
+
+.client-title {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    letter-spacing: 0.1em;
+    margin-top: 5px;
+}
+
+/* --- スマホ専用の微調整 --- */
+@media (max-width: 768px) {
+    .client-testimonial {
+        margin: 60px auto;
+        padding: 40px 20px; /* 左右の余白を少し詰めて文字領域を確保 */
+        width: 92%; /* 画面端ギリギリにならない絶妙な幅 */
+    }
+
+    .testimonial-text {
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+
+    .quote-icon {
+        font-size: 4rem;
+    }
+}
+
+/* 合計金額のスタイルを日本語に合わせて調整 */
+.cost-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    font-weight: bold;
+    color: var(--main-gold);
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3); /* 下線を少し控えめに */
+}
+
+/* 月額費用のスタイル */
+.cost-monthly {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.monthly-label {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+.monthly-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.monthly-price small {
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    margin-left: 4px;
+}
+
+/* スマホ用：縦に並べて読みやすく */
+@media (max-width: 768px) {
+    .cost-total, .cost-monthly {
+        flex-direction: row; /* 横並びを維持する場合 */
+        font-size: 0.95rem;
+    }
+    .monthly-price {
+        font-size: 1rem;
+    }
+}
+
+
+/* --- Client Voice Section --- */
+.testimonial-section {
+    /* 他の .content-block と同じ max-width に設定して位置を揃える */
+    max-width: 850px; 
+    margin: 120px auto;
+    padding: 0; /* 親要素の padding に任せるか、必要に応じて調整 */
+}
+
+/* タイトルのスタイルを他のセクションと完全に同期 */
+.testimonial-section .content-sub-title {
+    text-align: left; /* 中央寄せになっていた場合は左揃えに上書き */
+    margin-bottom: 35px;
+    /* content-sub-title に設定されているボーダー（金色の線）がそのまま適用されます */
+}
+
+/* コメント枠自体の調整 */
+.client-testimonial {
+    width: 100%; /* 親の 850px いっぱいに広げる */
+    padding: 60px 50px;
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 2px solid var(--main-gold);
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* スマホ表示時のレスポンシブ対応 */
+@media (max-width: 768px) {
+    .testimonial-section {
+        margin: 80px 20px; /* 左右に余白を持たせて端切れを防止 */
+        max-width: none;
+    }
+    
+    .client-testimonial {
+        padding: 40px 25px;
+    }
+
+    .testimonial-text {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+}
+
+/* --- Back Button Container (PC基準) --- */
+.detail-back-btn {
+    text-align: center;
+    margin-top: 100px;
+    /* PCでは既存のバランスを維持 */
+    margin-bottom: 120px; 
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-sub);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    transition: all 0.4s ease;
+}
+
+/* --- Responsive (ここがスマホ専用の修正) --- */
+@media (max-width: 768px) {
+    .detail-back-btn {
+        /* スマホ時のみ、フッターとの距離をPCより広めに確保 */
+        margin-top: 40px;
+        margin-bottom: 100px; /* ここでフッターをぐいっと押し下げます */
+    }
+    
+    .btn-back {
+        /* スマホで押しやすいサイズに微調整 */
+        padding: 15px 0;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* --- Back Button Container (PC版：引き締める) --- */
+.detail-back-btn {
+    text-align: center;
+    margin-top: 40px;   /* コメント欄との距離を少し詰める */
+    margin-bottom: 60px; /* PCではフッターがすぐ見えても良いので短縮 */
+}
+
